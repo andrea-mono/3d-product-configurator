@@ -5,13 +5,14 @@ import chakraTheme from '@chakra-ui/theme';
 import App from './App';
 import './index.css';
 
-const { Accordion, Button, Card, Heading } = chakraTheme.components;
+const { Accordion, Button, Card, Heading, Skeleton } = chakraTheme.components;
 const theme = extendBaseTheme({
   components: {
     Accordion,
     Button,
     Card,
     Heading,
+    Skeleton,
   },
 });
 

@@ -1,4 +1,5 @@
 import { Vector3 } from 'three';
+import { Camera, PositionalAudioProps } from '@react-three/fiber';
 
 export interface Color {
   name: string;
@@ -21,4 +22,9 @@ export interface Settings {
   band: string;
   outer: string;
   inner: string;
+}
+
+export interface ShoeCameraAndAudio {
+  camera: Camera;
+  audio: PositionalAudioProps | null;
 }

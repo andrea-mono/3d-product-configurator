@@ -17,7 +17,7 @@ function Color({ name, title, hex, isActive = false, onClick }: ColorProps) {
   };
 
   const play = (sound: keyof typeof audio) => {
-    audio[sound].volume = 0.4;
+    audio[sound].volume = 0.35;
     audio[sound].play();
   };
 
@@ -35,6 +35,7 @@ function Color({ name, title, hex, isActive = false, onClick }: ColorProps) {
       borderColor="gray.300"
       borderRadius="8px"
       mr={2}
+      isDisabled={isActive}
       onMouseEnter={() => play('click')}
       onClick={handleClick}
     >

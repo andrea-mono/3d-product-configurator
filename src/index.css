@@ -15,3 +15,15 @@ body,
     height: 100%;
     display: flex;
 }
+
+canvas {
+    cursor: grab;
+}
+
+canvas:active {
+    cursor: grabbing;
+}
+
+.canvas--disabled canvas {
+    cursor: default;
+}
