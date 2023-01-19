@@ -31,7 +31,7 @@ function Controls({ sections, settings, disabled, onChangeSetting }: ControlsPro
   );
 
   return (
-    <>
+    <Box h="100%" bgColor={settings.outer}>
       {!!sections && (
         <Card>
           <CardHeader pb={1}>
@@ -63,11 +63,12 @@ function Controls({ sections, settings, disabled, onChangeSetting }: ControlsPro
                 sections.map(({ title }, i) => (
                   <Box key={title}>
                     <SkeletonText noOfLines={1} skeletonHeight="4" w={i % 2 ? '230px' : '300px'} mb={2} />
-                    <Flex gap={4}>
-                      <Skeleton h="40px" w="50px" />
-                      <Skeleton h="40px" w="50px" />
-                      <Skeleton h="40px" w="50px" />
-                      <Skeleton h="40px" w="50px" />
+                    <Flex gap={2}>
+                      <Skeleton h="40px" w="40px" />
+                      <Skeleton h="40px" w="40px" />
+                      <Skeleton h="40px" w="40px" />
+                      <Skeleton h="40px" w="40px" />
+                      {!(i % 2) && <Skeleton h="40px" w="40px" />}
                     </Flex>
                   </Box>
                 ))}
@@ -75,7 +76,7 @@ function Controls({ sections, settings, disabled, onChangeSetting }: ControlsPro
           </CardBody>
         </Card>
       )}
-    </>
+    </Box>
   );
 }
 

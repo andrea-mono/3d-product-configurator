@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ContactShadows, Environment, Float, OrbitControls } from '@react-three/drei';
-import { gsap } from 'gsap';
 import Shoe from './Shoe';
 import { Settings, ShoeCameraAndAudio } from '../types';
 
@@ -20,20 +19,19 @@ function Viewer({
   onSetCamera,
   onAnimationEnded,
 }: ViewerProps) {
-  const floatRef = useRef(null);
   const handleShoeMounted = (cameraAndAudio: ShoeCameraAndAudio) => onSetCamera(cameraAndAudio);
   const handleAnimationEnded = (value: boolean) => onAnimationEnded(value);
-
-  useEffect(() => {
-    if (!floatRef.current) return;
-    gsap.to(floatRef.current, { speed: 0.5, duration: 3 });
-  }, [floatRef.current]);
-
   return (
     <Canvas className={!initialAnimationEnded || disabledOrbitControls ? 'canvas--disabled' : ''}>
+      <color attach="background" args={[settings.outer]} />
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
-      <Float ref={floatRef} rotationIntensity={1} floatIntensity={5} floatingRange={[0.025, 0.1]}>
+      <Float
+        speed={!disabledOrbitControls ? 1 : 0}
+        rotationIntensity={1}
+        floatIntensity={5}
+        floatingRange={[0.025, 0.1]}
+      >
         <Shoe
           position={[0, 0, 0]}
           settings={settings}

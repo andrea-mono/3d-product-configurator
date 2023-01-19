@@ -4,7 +4,7 @@ export const defaultCameraPosition = { x: 1.5971027070081658, y: -0.063749765215
 
 export const colors: Color[] = [
   { name: 'white', hex: '#FFF' },
-  { name: 'black', hex: '#000' },
+  { name: 'black', hex: '#222' },
   { name: 'red.300', hex: '#FC8181' },
   { name: 'teal.300', hex: '#4FD1C5' },
   { name: 'blue.300', hex: '#63B3ED' },
