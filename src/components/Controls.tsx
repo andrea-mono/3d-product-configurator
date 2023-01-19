@@ -5,10 +5,11 @@ import Color from './Color';
 
 interface ControlsProps {
   sections: Section[];
+  settings: Settings;
   onChangeSetting: (setting: keyof Settings, value: string) => void;
 }
 
-function Controls({ sections, onChangeSetting }: ControlsProps) {
+function Controls({ sections, settings, onChangeSetting }: ControlsProps) {
   const handleClick = useCallback(
     (setting: keyof Settings, value: string) => {
       onChangeSetting(setting, value);
@@ -32,7 +33,14 @@ function Controls({ sections, onChangeSetting }: ControlsProps) {
                   </Heading>
                   <Box>
                     {colors.map(({ name, hex }) => (
-                      <Color key={name} name={name} title={title} hex={hex} onClick={handleClick} />
+                      <Color
+                        key={name}
+                        name={name}
+                        title={title}
+                        hex={hex}
+                        isActive={settings[title] === hex}
+                        onClick={handleClick}
+                      />
                     ))}
                   </Box>
                 </Box>

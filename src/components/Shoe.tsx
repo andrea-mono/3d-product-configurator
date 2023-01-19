@@ -12,7 +12,7 @@ interface ShoeProps extends GroupProps {
 
 function Shoe(props: ShoeProps) {
   const { settings, ...rest } = props;
-  const model = useGLTF('./shoe-draco.glb');
+  const model = useGLTF('./models/shoe-draco.glb');
   const nodes = model.nodes as { [key: string]: Object3D & { geometry: BufferGeometry } };
   const { camera } = useThree();
 

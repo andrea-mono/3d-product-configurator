@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import { Camera } from '@react-three/fiber';
 import { Loader } from '@react-three/drei';
 import { gsap } from 'gsap';
@@ -60,14 +60,14 @@ function App() {
   const mainCamera = useRef<Camera | null>(null);
   const [activeSetting, setActiveSetting] = useState<keyof Settings>('none');
   const [settings, setSettings] = useState<Settings>({
-    laces: 'white',
-    caps: 'white',
-    band: 'white',
-    patch: 'white',
-    stripes: 'white',
-    sole: 'white',
-    inner: 'white',
-    outer: 'white',
+    laces: '#FFF',
+    caps: '#FFF',
+    band: '#FFF',
+    patch: '#FFF',
+    stripes: '#FFF',
+    sole: '#FFF',
+    inner: '#FFF',
+    outer: '#FFF',
   });
 
   const handleSetCamera = (camera: Camera) => (mainCamera.current = camera);
@@ -79,10 +79,16 @@ function App() {
   };
 
   const changeSettings = (setting: keyof Settings, value: string) => {
-    setActiveSetting(activeSetting === setting ? 'none' : setting);
+    setActiveSetting(setting);
     moveCamera(setting);
     console.log(mainCamera.current?.position);
     setSettings({ ...settings, [setting]: value });
+  };
+
+  const setDefaultBehavior = () => {
+    setActiveSetting('none');
+    if (!mainCamera.current) return;
+    gsap.to(mainCamera.current?.position, { x: 1.5971027070081658, y: -0.06374976521564238, z: 1.2021642611149859 });
   };
 
   return (
@@ -91,8 +97,10 @@ function App() {
         <Configurator
           settings={settings}
           sections={sections}
+          activeSetting={activeSetting}
           disabledOrbitControls={activeSetting !== 'none'}
           onSetCamera={handleSetCamera}
+          onGoBack={setDefaultBehavior}
           onChangeSetting={changeSettings}
         />
       </Suspense>

@@ -17,7 +17,7 @@ function Viewer({ settings, disabledOrbitControls, onSetCamera }: ViewerProps) {
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
       <Float
-        speed={!disabledOrbitControls ? 0 : 0}
+        speed={!disabledOrbitControls ? 1 : 0}
         rotationIntensity={1}
         floatIntensity={5}
         floatingRange={[0.025, 0.1]}
@@ -26,10 +26,10 @@ function Viewer({ settings, disabledOrbitControls, onSetCamera }: ViewerProps) {
       </Float>
       <ContactShadows position={[0, -0.8, 0]} opacity={0.25} scale={10} blur={1.5} far={0.8} />
       <OrbitControls
-        minDistance={disabledOrbitControls ? 1 : 1.2}
+        minDistance={disabledOrbitControls ? 1 : 1.5}
         maxDistance={2}
         enableRotate={!disabledOrbitControls}
-        enableZoom={true}
+        enableZoom={!disabledOrbitControls}
       />
     </Canvas>
   );
