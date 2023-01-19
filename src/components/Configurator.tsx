@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import Header from './Header';
 import Viewer from './Viewer';
 import Controls from './Controls';
@@ -32,7 +32,9 @@ function Configurator({
   return (
     <Grid templateColumns="repeat(12, 1fr)" h="100%">
       <GridItem position="relative" colSpan={8}>
-        {activeSetting !== 'none' && <Header activeSetting={activeSetting} onGoBack={onGoBack} />}
+        {activeSetting !== 'none' && (
+          <Header activeSetting={activeSetting} bgColor={settings.outer} onGoBack={onGoBack} />
+        )}
         <Viewer
           settings={settings}
           initialAnimationEnded={initialAnimationEnded}
