@@ -33,7 +33,7 @@ function Controls({ sections, settings, disabled, onChangeSetting }: ControlsPro
   return (
     <Box h="100%" bgColor={settings.outer}>
       {!!sections && (
-        <Card>
+        <Card h="100%">
           <CardHeader pb={1}>
             <Heading size="md">Configurator</Heading>
           </CardHeader>
